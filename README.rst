@@ -1,10 +1,10 @@
 .. image:: etv_logo.png
    :align: left
 
-Earth Timeseries Visualization
+Earth Time series Visualization
 ==============================
 
-A visualization application for gridded geospatial time-series data
+An application visualizing gridded geospatial time series data
 
 
 Requirements
@@ -17,8 +17,8 @@ Requirements
 Install
 -------
 It is best to use a Python virtual environment when running Etv, particularly
-for running the correct version of Django. A good place for this could be where
-you put your processed JSON data:
+for ensuring the correct version of Django. A good place you virtual environment
+could be where the directory where you put your processed JSON data:
 
 .. code:: bash
 
@@ -43,7 +43,7 @@ After installation, use the Etv command-line-interface (CLI) to create sample
 data and run the application. The first argument for all CLI commands is the
 path to your processed JSON data.
 
-You can first create sample data from the NOAA NCOM regional ocean model,
+First, create some sample data from the NOAA NCOM regional ocean model,
 focussed on the waters off of Humboldt County, California:
 
 .. note:: If you installed Etv in your virtual environment, you must activate
@@ -76,4 +76,4 @@ Hans Kristian Djuve
 
 License
 -------
-MIT License. See the included license file.
+MPL 2.0 License. See the included license file.
