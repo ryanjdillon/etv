@@ -1,0 +1,229 @@
+{% load static %}
+{% load custom_tags %}
+
+{% block content %}
+
+<!--<div id="popout-sidebar-content" class="collapse vstack-right"> -->
+  <!-- time stepper -->
+  <div class="prelative margin-bottom-5 vstack-right">
+    <a ng-click="clearAllSelections()"
+       class="btn btn-default btn-xs">clear all selections
+    </a>
+  </div>
+  
+  <!-- parameter selection -->
+  <div class="prelative width-100 vstack-right">
+    {% for s_name, s in sections_django.items %}
+      <a id="section_{{s_name}}"
+         href="#{{s_name}}"
+         class="list-group-item {[ getListGroupColor('{{s_name}}') ]} strong"
+         data-toggle="collapse"
+         data-parent="#param-menu">{{s.screen_name}}<i class="fa fa-caret-down"></i>
+      </a>
+    
+      <div class="collapse" id="{{s_name}}">
+    
+        <!-- parameter title and info block -->
+        <div class="block">
+          <div>
+            <b>Parameter</b>
+          </div>
+    
+          {% for p_name, p in s.parameters.items %}
+            <!-- param-name with info modal -->
+            <div class="block-group">
+              <span class="glyphicon glyphicon-info-sign"
+                    data-toggle="modal"
+                    data-target="#modal_info_{{s_name}}_{{p_name}}">&#x202F;{{p.short_description|thin_nb_spaced}}</span>
+              &nbsp;
+              <div id="modal_info_{{s_name}}_{{p_name}}"
+                   class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button"
+                              class="close"
+                              data-dismiss="modal">&times;
+                      </button>
+                      <h4 class="modal-title">Parameter details</h4>
+                    </div>
+                    <div class="modal-body">
+                      Name: {{p.short_description}}
+                      <br> {{p.long_description}}
+                      <br> Unit: {{p.unit}}
+                      <br>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button"
+                              class="btn btn-default"
+                              data-dismiss="modal">Close
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div><!-- modal info -->
+            </div>
+          {% endfor %}
+        </div><!-- parameter title and info block -->
+    
+        <!-- Min scale block -->
+        <div class="block">
+          <div>
+            <b>Min</b>
+          </div>
+    
+          {% for p_name, p in s.parameters.items %}
+            <div class="block-group">
+              <div class="block-item">
+                <input class="form-control input-sm scale-width"
+                       ng-model="sections['{{s_name}}']['parameters']['{{p_name}}'].min"
+                       ng-change="update_parameter('{{s_name}}','{{p_name}}')"
+                       type="text">
+                </input>
+              </div>
+  
+              <div class="block-item">
+                <button type="button"
+                   class="btn btn-default btn-xs"
+                   data-toggle="modal"
+                   "{[ sections['{{s_name}}']['parameters']['{{p_name}}']['colors'][0] ]}"
+                   style="background: {[ sections['{{s_name}}']['parameters']['{{p_name}}']['colors'][0] ]};
+                          color: {[ sections['{{s_name}}']['parameters']['{{p_name}}']['colors'][0] ]};
+                          border: {[ sections['{{s_name}}']['parameters']['{{p_name}}']['colors'][0] ]};"
+                   data-target="#modal_color_0_{{s_name}}_{{p_name}}">
+                     &nbsp;
+                     &nbsp;
+                     &nbsp;
+                </button>
+    
+                <div id="modal_color_0_{{s_name}}_{{p_name}}" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Select a color</h4>
+                      </div>
+                      <div class="modal-body">
+                        <color-picker ng-model="sections['{{s_name}}']['parameters']['{{p_name}}']['colors'][0]"
+                                      ng-change="update_parameter('{{s_name}}','{{p_name}}')">
+                        </color-picker>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button"
+                                class="btn btn-default"
+                                data-dismiss="modal">Close
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div><!-- model colar -->
+              </div><!-- block-item -->
+            </div><!-- block-group -->
+          {% endfor %}
+        </div><!-- min scale block -->
+    
+        <!-- param-scale -->
+        <div class="block">
+          <div>
+            <b>Max</b>
+          </div>
+    
+          {% for p_name, p in s.parameters.items %}
+            <div class="block-group">
+              <div class="block-item">
+                <input class="form-control input-sm scale-width"
+                       ng-model="sections['{{s_name}}']['parameters']['{{p_name}}'].max"
+                       ng-change="update_parameter('{{s_name}}','{{p_name}}')"
+                       type="text">
+                </input>
+              </div>
+  
+              <div class="block-item">
+                <button type="button"
+                   class="btn btn-default btn-xs"
+                   data-toggle="modal"
+                   "{[ sections['{{s_name}}']['parameters']['{{p_name}}']['colors'][1] ]}"
+                   style="background: {[ sections['{{s_name}}']['parameters']['{{p_name}}']['colors'][1] ]};
+                          color: {[ sections['{{s_name}}']['parameters']['{{p_name}}']['colors'][1] ]};
+                          border: {[ sections['{{s_name}}']['parameters']['{{p_name}}']['colors'][1] ]};"
+                   data-target="#modal_color_1_{{s_name}}_{{p_name}}">
+                     &nbsp;
+                     &nbsp;
+                     &nbsp;
+                </button>
+    
+                <div id="modal_color_1_{{s_name}}_{{p_name}}" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Select a color</h4>
+                      </div>
+                      <div class="modal-body">
+                        <color-picker ng-model="sections['{{s_name}}']['parameters']['{{p_name}}']['colors'][1]"
+                                      ng-change="update_parameter('{{s_name}}','{{p_name}}')">
+                        </color-picker>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button"
+                                class="btn btn-default"
+                                data-dismiss="modal">Close
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div><!-- model colar -->
+              </div><!-- block-item -->
+            </div><!-- block-group -->
+          {% endfor %}
+        </div><!-- max scale block -->
+    
+        <!-- param-components -->
+        <div class="block">
+          <div>
+            <b>{{s.dimension_name}}</b>
+          </div>
+    
+          {% for p_name, p in s.parameters.items %}
+            <div class="block-group">
+              <a ng-click="click('{{s_name}}','{{p_name}}','all')">
+                <div id="{[ getParamId('{{s_name}}','{{p_name}}','all') ]}"
+                     class="block-item layer-btn {[ getButtonStyle('{{s_name}}','{{p_name}}','all') ]}">
+                  {{p.reduction}}
+                </div>
+              </a>
+    
+              {% if 'layers' in p.keys %}
+                {% for el in p.layers %}
+                  {% for k, v in el.items %}
+                    <a ng-click="click('{{s_name}}','{{p_name}}','{{k}}')"
+                       title="{{s_name}}_{{p_name}}_{{k}}">
+                        <div id="{[ getParamId('{{s_name}}','{{p_name}}','{{k}}') ]}"
+                             class="block-item layer-btn {[ getButtonStyle('{{s_name}}','{{p_name}}',{{k}}) ]}">
+                        {{k}}
+                      </div>
+                    </a>
+                  {% endfor %}
+                {% endfor %}
+              {% elif 'stages' in p.keys %}
+                {% for el in p.stages %}
+                  {% for k, v in el.items %}
+                    <a ng-click="click('{{s_name}}','{{p_name}}','{{k}}')"
+                       title="{{s_name}}_{{p_name}}_{{k}}">
+                      <div id="{[ getParamId('{{s_name}}','{{p_name}}','{{k}}') ]}"
+                           class="block-item layer-btn {[ getButtonStyle('{{s_name}}','{{p_name}}','{{k}}') ]}">
+                        {{k}}
+                      </div>
+                    </a>
+                  {% endfor %}
+                {% endfor %}
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div><!-- param components -->
+    
+      </div><!-- collapse -->
+    {% endfor %}<!-- sections -->
+  </div>
+  <!-- </div> -->
+{% endblock %}

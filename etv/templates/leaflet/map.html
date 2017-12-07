@@ -1,0 +1,82 @@
+{% extends "base_generic.html" %}
+{% load static %}
+{% load custom_tags %}
+
+{% block title %}Map{% endblock %}
+
+{% block main_nav_extra %}{% plugin_links %}{% endblock %}
+
+{% block content %}
+<div ng-app="EtvApp">
+  <div ng-controller="EtvController">
+      <!-- leaflet map -->
+      <div id="map"></div>
+  
+      <!-- parameter selection -->
+      <div class="popout-sidebar">
+        <a href="#popout-sidebar-content"
+           class="btn btn-default vstack-right"
+           data-toggle="collapse">
+          <span class="glyphicon glyphicon-cog"></span> Selections
+        </a>
+        <div id="popout-sidebar-content" class="collapse vstack-right">
+          {% include "leaflet/parameters.html" %}
+        </div>
+      </div>
+  
+      <!-- simulation info and legend -->
+      <div class="popout-info">
+        <a href="#popout-info-content"
+           class="btn btn-default"
+           data-toggle="collapse">
+          <span class="glyphicon glyphicon-cog"></span> Info
+        </a>
+        <div id="popout-info-content" class="collapse">
+          {% for key, val in simulation.items %}
+            {% if key != "path" %}
+              {{ key|score_space|capfirst }} :
+              {% if val|score_space|wordcount > 4 %}
+                  <span data-ng-init="txtId={{ key }}">{{ val|score_space|first_words:4 }}
+                      <span ng-show="! showDetails"
+                            data-ng-attr-id={{ key }}
+                            ng-click="showDetails = ! showDetails"
+                            class="glyphicon glyphicon-option-horizontal">
+                      </span>
+                    <span ng-show="showDetails">{{ val|score_space|last_words:4 }}
+                      <span data-ng-attr-id={{ key }}
+                             ng-click="showDetails = ! showDetails"
+                             class="glyphicon glyphicon-chevron-left">
+                      </span>
+                    </span>
+                  </span>
+              {% else %}
+                {{ val|score_space }}
+              {% endif %}
+              <br>
+            {% endif %}
+          {% endfor %}
+          {% include "leaflet/legend.html" %}
+        </div>
+      </div>
+  
+      <!-- Simulation navigation -->
+      {% include "leaflet/simnav.html" %}
+  
+  </div><!-- ng-controller -->
+</div><!-- ng-app -->
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/leaflet-1.0.3.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.9/d3.min.js"></script>
+<script src="{% static 'js/L.D3SvgOverlay-2.2.min.js' %}"></script>
+<script src="{% static 'js/angular-color-picker.js' %}"></script>
+<script type="text/javascript">
+   var etvSimulationPath = '{{ simulation.path }}';
+   var etvLon0 = {{ map_config.lon0 }};
+   var etvLat0 = {{ map_config.lat0 }};
+   var etvZoom = {{ map_config.zoom }};
+   var etvSections = {{ sections_js|safe }};
+</script>
+<script src="{% static 'js/app.js' %}"></script>
+{% endblock %}

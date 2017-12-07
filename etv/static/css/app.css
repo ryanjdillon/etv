@@ -1,0 +1,372 @@
+@import url(https://fonts.googleapis.com/css?family=Inconsolata); /* :400,600,200); */
+
+/* model colors 
+ * oil:  #333333;
+ * copepod: #0066ff;
+ * larvae: #006600;
+ * ssb: #00cc66;
+*/
+
+/* Page */
+/*----------------------------------------*/
+
+html, body {
+  margin: 0;
+}
+
+/* fonts */
+/*----------------------------------------*/
+.title {
+  font-family: 'Inconsolata', sans-serif;
+  font-weight: 700;
+}
+
+.small-title {
+  font-family: 'Inconsolata', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+h1 {
+  font-family: 'Inconsolata', sans-serif;
+  font-weight: 700;
+}
+
+h2 {
+  font-family: 'Inconsolata', sans-serif;
+  font-size: 25px;
+  font-weight: 400;
+}
+
+h3 {
+  font-family: 'Inconsolata', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+h4 {
+  font-family: 'Inconsolata', sans-serif;
+  font-weight: 400;
+}
+
+
+/* Forms
+/*----------------------------------------*/
+/* http://stackoverflow.com/a/13204045/943773 */
+
+label, input {
+  display: inline-block;
+}
+
+label {
+  width: 30%;
+  text-align: right;
+}
+
+label + input {
+  width: 30%;
+  padding: 5px 35px 5px 5px;
+  margin: 10px 5% 0px 4%;
+  border: 1px solid #ccc;
+}
+
+input + input {
+  float: right;
+}
+
+label.error {
+}
+
+.error ul.errorlist {
+  margin-bottom: 0rem;
+  font-size: 0.75rem;
+}
+
+
+/* Formatting helper classes
+/*----------------------------------------*/
+
+.row-fluid {
+  height: 100%;
+  display:table-cell;
+  vertical-align: middle;
+} 
+
+.centering {
+  float:none;
+  margin:0 auto;
+}
+
+.center-block {
+  margin-left: auto;
+  margin-right: auto;
+  display: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.vstack-right {
+  float: right;
+  clear: right;
+}
+
+.prelative {
+    position: relative;
+}
+
+.width-100 {
+    width: 100%;
+}
+
+.margin-bottom-5 {
+  margin-bottom: 5px;
+}
+
+.margin-right-10 {
+  margin-right: 10px;
+}
+
+.valign-middle {
+  vertical-align: middle;
+}
+
+.scale-width {
+  width: 60px;
+}
+
+.content-container {
+  margin: 0;
+  padding-bottom: 6vh;
+}
+
+.vcenter {
+  margin-top: 30vh;
+}
+
+
+/* Map
+/*----------------------------------------*/
+#map {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  z-index: 1;
+}
+
+
+/* Simulation summary and legend
+/*----------------------------------------*/
+.popout-info {
+  position: absolute;
+  margin: 0;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+}
+
+#popout-info-content {
+  background-color: rgba(255, 255, 255, 0.8); 
+  padding: 10px;
+  border-radius: 0 10px 10px 10px;
+}
+
+.legend {
+  line-height: 18px;
+  color: #555;
+  background-color: rgba(255, 255, 255, 0.8); 
+  padding: 5px;
+  border-radius: 5px;
+}
+  .legend i {
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin-right: 8px;
+    opacity: 0.9;
+  }
+
+.block {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.block-group {
+  display: flex;
+  height: 28px;
+  margin-top: 2px;
+}
+  .block-group a:hover {
+    text-decoration: none;
+  }
+
+.block-item {
+  display: inline-flex;
+  margin-right: 5px;
+}
+
+
+/* Selection sidebar 
+/*----------------------------------------*/
+.popout-sidebar {
+  position: absolute;
+  width: auto;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+}
+
+#popout-sidebar-content {
+  position: relative;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.8); 
+  border-radius: 10px 0 10px 10px;
+  max-height:80vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.list-group.panel > .list-group-item {
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.list-group-submenu {
+  margin-left:20px;
+}
+
+.list-group-item {
+  height: 30px;
+  width: auto;
+  padding: 2px 10px;
+}
+
+.layer-btn {
+    color: #555555;
+    font-size: 1em !important;
+    font-style: bold !important;
+    text-decoration: none !important;
+    padding: 3px;
+    text-align: center;
+    border-radius: 5px;
+  }
+
+  .layer-btn div:hover {
+    background-color: #ffffff;
+  }
+  
+.active {
+  color: #ffffff !important;
+  background-color: #555555 !important;
+}
+
+.inactive {
+  color: #555555 !important;
+  background-color: #e2e2e2 !important;
+}
+
+
+/* Color picker modal
+/*----------------------------------------*/
+.modal-dialog {
+  width: 350px;
+  margin-top: 100px;
+}
+
+.modal-backdrop {
+  z-index: 1;
+}
+
+
+/* Simulation navigation pane
+/*----------------------------------------*/
+#simnav-container {
+  margin: auto;
+  position: absolute;
+  text-align: center;
+  top: auto;
+  bottom: 10px;
+  left:0;
+  right: 0;
+  z-index: 2;
+}
+
+#simnav {
+  display: inline-flex;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.8); 
+  padding: 5px;
+  align-vertical: middle;
+}
+
+#simnav a {
+  color: #555;
+  font-size: 1em !important;
+  font-style: bold !important;
+  text-decoration: none !important;
+}
+
+#simnav a:hover {
+  text-decoration: none !important;
+}
+
+.simnav-btn {
+  display: inline-flex;
+  behavior: url(PIE.htc); /* IE8 */
+  background-color: rgba(255, 255, 255, 0.8); 
+  align-items: center;
+  justify-content: center;
+  border: 2px solid;
+  border-color: #eeeeee;
+}
+
+.simnav-btn.player {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+}
+
+.simnav-btn.player:hover {
+  border-color: #999999;
+}
+
+.simnav-btn.box {
+  border-radius: 5px;
+  height: 30px;
+  padding: 0 5px 0 5px;
+}
+
+
+/* Customizations for nicer URLs
+/*----------------------------------------*/
+/* attach pdf icon to all urls pointing to pdfs */
+a[href$=".pdf"]:after {
+  font-family: "foundation-icons";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  text-decoration: inherit;
+  content: "\f18b";
+  padding-left: 4pt;
+}
+
+/* attach doc icon to all urls poiting to .doc and .docx */
+a[href$=".doc"]:after, a[href$=".docx"]:after {
+  font-family: "foundation-icons";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  text-decoration: inherit;
+  content: "\f183";
+  padding-left: 4pt;
+}

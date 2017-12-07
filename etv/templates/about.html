@@ -1,0 +1,99 @@
+{% extends "base_generic.html" %}
+{% load static %}
+
+{% block title %}Title{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-sm-3">
+  </div>
+
+  <div class="col-sm-6">
+    <div class="person-container">
+      <h2>Developers</h2>
+
+      <div class="person-box">
+        <img src="{% static 'img/people/olejacob.jpg' %}">
+        <div class="name">Ole Jacob Broch</div>
+	<div class="tag">
+          <div class="tag-copepod"><a href="http://sinmod.no/">SINMOD</a></div>
+	</div>
+      </div><!-- person box -->
+
+      <div class="person-box">
+        <img src="{% static 'img/people/raymond.jpg' %}">
+        <div class="name">Raymond Nepstad</div>
+	<div class="tag">
+     	  <div class="tag-oil"><a href="https://www.sintef.no/en/software/oscar/">OSCAR</a></div>
+	</div>
+      </div><!-- person box -->
+
+      <div class="person-box">
+        <img src="{% static 'img/people/frode.jpg' %}">
+        <div class="name">Frode Vikebø</div>
+	<div class="tag">
+	  <div class="tag-larvae">LARMOD</div>
+	</div>
+      </div><!-- person box -->
+
+      <div class="person-box">
+        <img src="{% static 'img/people/daniel.jpg' %}">
+        <div class="name">Daniel Howell</div>
+	<div class="tag">
+ 	  <div class="tag-ssb"><a href="http://www.hafro.is/gadget/">GADGET</a></div>
+	</div>
+      </div><!-- person box -->
+
+      <div class="person-box">
+        <img src="{% static 'img/people/jonas.jpg' %}">
+        <div class="name">Jonas Jusélius</div>
+	<div class="tag">
+	  <div class="tag-symbioses">Symbioses</div> 
+	</div>
+      </div><!-- person box -->
+
+      <div class="person-box">
+        <img src="{% static 'img/people/radovan.jpg' %}">
+        <div class="name">Radovan Bast</div>
+	<div class="tag">
+	  <div class="tag-symbioses">Symbioses</div>
+	</div>
+	<div class="tag">
+	  <div class="tag-web">Web</div>
+	</div>
+      </div><!-- person box -->
+
+      <div class="person-box">
+        <img src="{% static 'img/people/ryan.jpg' %}">
+        <div class="name">Ryan J. Dillon</div>
+	<div class="tag">
+	  <div class="tag-symbioses">Symbioses</div>
+	</div>
+	<div class="tag">
+	  <div class="tag-web">Web</div>
+	</div>
+      </div><!-- person box -->
+
+      <div class="person-box">
+        <img src="{% static 'img/people/hans.jpg' %}">
+        <div class="name">Hans Kristian Djuve</div>
+	<div class="tag">
+	  <div class="tag-symbioses">Symbioses</div>
+	</div>
+	<div class="tag">
+	  <div class="tag-web">Web</div>
+	</div>
+      </div><!-- person box -->
+
+    </div><!-- person container -->
+	  
+    </div>
+  </div>
+
+  <div class="col-sm-3">
+  </div>
+</div> <!-- row -->
+{% endblock %}
+
+{% block extra_js %}
+{% endblock %}

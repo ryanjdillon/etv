@@ -1,0 +1,62 @@
+<div ng-show="!!legends.length" id="map-legend">
+    <div><br>
+  <b>Legend</b>
+    </div>
+
+    <!-- Left title column -->
+    <div class='block'>
+      <div ng-repeat="l in legends" class="block-group">
+          <span class="valign-middle">
+              {[ sections[l[0]]['parameters'][l[1]].short_description ]}
+          </span>
+      </div>
+    </div><!-- left -->
+
+    <!-- Center min/color-bar/max column -->
+    <div class='block'>
+      <div ng-repeat="l in legends" class="block-group valign-middle">
+
+        <div class='block-item'>
+          <span class="valign-middle">
+            {[ sections[l[0]]['parameters'][l[1]].min ]}
+          </span>
+        </div>
+
+        <div class='block-item'>
+          <span class="valign-middle">
+            <svg width="100" height="10">
+              <defs>
+                <linearGradient id="grad_{[ l[0] ]}_{[ l[1] ]}"
+                                x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%"
+                        style="stop-color: {[ hexToRgb(sections[l[0]]['parameters'][l[1]].colors[0]) ]}; stop-opacity: 1" />
+                  <stop offset="100%"
+                        style="stop-color: {[ hexToRgb(sections[l[0]]['parameters'][l[1]].colors[1]) ]}; stop-opacity: 1" />
+                </linearGradient>
+              </defs>
+              <rect width="100"
+                    height="10"
+                    fill="url(#grad_{[ l[0] ]}_{[ l[1] ]})" />
+            </svg>
+          </span>
+        </div>
+
+        <div class='block-item'>
+          <span class="valign-middle">
+            {[ sections[l[0]]['parameters'][l[1]].max ]}
+          </span>
+        </div>
+      </div><!-- ng-repeat min/max/color-bar/unit -->
+    </div><!-- center -->
+
+    <!-- Right units column -->
+    <div class="block">
+      <div ng-repeat="l in legends" class="block-group">
+        <span class="valign-middle">
+          [{[ sections[l[0]]['parameters'][l[1]].unit ]}]
+        </span>
+      </div>
+    </div><!-- right -->
+
+
+</div>

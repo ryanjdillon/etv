@@ -1,0 +1,43 @@
+{% extends "base_generic.html" %}
+{% load static %}
+{% load custom_tags %}
+
+{% block title %}Select simulation{% endblock %}
+
+{% block content %}
+
+    <div class="col-md-12">
+      <h2>Select simulation</h2>
+      <table class="table table-striped table-hover ">
+        <thead>
+          <tr>
+            {% for sim_param_title in sim_params %}
+	      <th>{{sim_param_title|score_space|title}}</th>
+	    {% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          {% for name, sim in simulations.items %}
+            <tr>
+              {% for key, val in sim.items %}
+	        {% if key != 'path' %}
+	          <td>{{ val|score_space }}</td>
+	        {% endif %}
+	      {% endfor %}
+              <td><a href="/map/{{ sim.path }}/" class="btn btn-primary btn-sm">Map</a></td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-md-12">
+      <br>
+      <br>
+      <br>
+      <br>
+    </div>
+
+    <div class="col-md-3"></div>
+
+{% endblock %}

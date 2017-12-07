@@ -1,0 +1,17 @@
+var meta1nJson={
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          67.70035166666666,
+          10.841104166666666
+        ]
+      },
+      "properties": {
+        "Name": "Balder",
+      }
+    }],
+  };

@@ -1,0 +1,36 @@
+{% load static %}
+
+<!-- time stepper -->
+<div id="simnav-container">
+  <div id="simnav" ng-show="showTimesteps">
+      <select ng-model="speedIndex"
+              class="simnav-btn box margin-right-10">
+          <option selected disabled hidden style='display: none' value=''></option>
+          <option ng-repeat="option in speedOptions"
+                  ng-selected="$first"
+                  value="{[ option.id ]}">x{[ option.name ]}
+          </option>
+      </select>
+    <a ng-click="play()" class="simnav-btn player margin-right-10" title="Loop through available timesteps">
+      <span class="glyphicon glyphicon-play"></span>
+    </a>
+    <a ng-click="resetTime()" class="simnav-btn player margin-right-10" title="Go back to first timestep">
+      <span class="glyphicon glyphicon-refresh"></span>
+    </a>
+    <a ng-click="moveTime(-8)" class="simnav-btn player margin-right-10" title="Go back 8 timesteps">
+      <span class="glyphicon glyphicon-fast-backward"></span>
+    </a>
+    <a ng-click="moveTime(-2)" class="simnav-btn player margin-right-10" title="Go back 2 timesteps">
+      <span class="glyphicon glyphicon-backward"></span>
+    </a>
+    <div class="simnav-btn box margin-right-10">
+      {[ getTime() ]}
+    </div>
+    <a ng-click="moveTime(2)" class="simnav-btn player margin-right-10" title="Go forward 2 timesteps">
+      <span class="glyphicon glyphicon-forward"></span>
+    </a>
+    <a ng-click="moveTime(8)" class="simnav-btn player" title="Go forward 8 timesteps">
+      <span class="glyphicon glyphicon-fast-forward"></span>
+    </a>
+  </div>
+</div>

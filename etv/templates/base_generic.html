@@ -1,0 +1,45 @@
+{% load staticfiles %} {% load custom_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ETV - {% block title %}{% endblock %}</title>
+
+    <link href='//fonts.googleapis.com/css?family=Exo+2:400,600,200'
+          rel='stylesheet'
+          type='text/css'>
+    <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.ico' %}" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/leaflet-1.0.3.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/app.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/angular-color-picker.css' %}" />
+
+    <!-- http://stackoverflow.com/a/21146439 -->
+    <style>
+        [ng\:cloak],
+        [ng-cloak],
+        [data-ng-cloak],
+        [x-ng-cloak],
+        .ng-cloak,
+        .x-ng-cloak {
+            display: none !important;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div>
+        {% block content %}{% endblock %}
+    </div>
+
+    <script src="{% static 'js/jquery-1.9.1.js' %}"></script>
+    <script src="{% static 'js/bootstrap-3.3.6.min.js' %}"></script>
+    <script src="{% static 'js/angular-1.4.9.min.js' %}"></script>
+
+    {% block extra_js %}{% endblock %}
+</body>
+
+</html>
