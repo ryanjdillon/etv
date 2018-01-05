@@ -6,6 +6,9 @@ Earth Time series Visualization
 
 An application visualizing gridded geospatial time series data
 
+A live demo can be viewed at:
+http://etv.ryandillon.net
+
 
 Requirements
 ------------
