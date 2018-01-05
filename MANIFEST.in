@@ -1,0 +1,2 @@
+recursive-include etv/static *
+recursive-include etv/templates *.html

@@ -21,7 +21,13 @@ setup(
     url='https://github.com/ryanjdillon/etv',
     download_url='https://github.com/ryanjdillon/etv/archive/0.1.tar.gz',
     license='MIT',
-    packages=['etv'],
+    packages=[
+        'etv',
+        'etv.cli',
+        'etv.etv',
+        'etv.etv_configuration',
+        'etv.etv_configuration.templatetags',
+        'etv.utils'],
     install_requires=[
         'click',
         'Django',
