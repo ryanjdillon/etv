@@ -21,10 +21,11 @@ def select(request):
 
     simulations = settings.SIMULATIONS
     for name, sim in simulations.items():
-        params = list()
-        for key, val in sim.items():
-            params.append(val)
-        simulations[name]['path'] = '/'.join(params)
+        if 'path' not in simulations:
+            params = list()
+            for key, val in sim.items():
+                params.append(val)
+            simulations[name]['path'] = '/'.join(params)
 
     context = {'simulations': simulations,
                'sim_params': settings.SIM_PARAMS}
